@@ -86,7 +86,6 @@ const onHandleAnswer = (i, isCorrect) => {
 
   &__list-item {
     display: flex;
-    align-items: center;
     gap: 0 20px;
     margin-bottom: 20px;
   }
