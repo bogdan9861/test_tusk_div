@@ -4,23 +4,25 @@
     <div
       class="progress__background"
       :style="{
-        width: (progress?.clientWidth / total) * currentQuestion + 'px',
+        width: (progress?.clientWidth / total) * current + 'px',
       }"
     >
-      <span
-        class="progress__number current"
-        :class="{ active: currentQuestion > 0 }"
-        >{{ currentQuestion }}</span
-      >
+      <span class="progress__number current" :class="{ active: current > 0 }">{{
+        current
+      }}</span>
     </div>
     <span class="progress__number to">{{ total }}</span>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import store from "@/store";
+import { computed, ref } from "vue";
 
-const { currentQuestion, total } = defineProps(["currentQuestion", "total"]);
+const total = store.state.questions.length;
+const current = computed(() => {
+  return store.state.currentQuestion;
+});
 
 const progress = ref(null);
 </script>

@@ -7,18 +7,17 @@
         :title="data[currentQuestion]?.title"
         :answers="shuffle(data[currentQuestion]?.answers)"
       />
-      <ProgressBar :currentQuestion="currentQuestion" :total="data.length" />
+      <ProgressBar />
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, watchEffect } from "vue";
 import store from "@/store";
-
 import Card from "@/components/Card.vue";
-import ProgressBar from "@/components/ProgressBar.vue";
 
+import ProgressBar from "@/components/ProgressBar.vue";
 import { shuffle } from "@/utils/shuffle";
 
 const data = shuffle(store.state.questions);

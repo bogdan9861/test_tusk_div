@@ -38,6 +38,8 @@ const text = ref("");
 const correct = store.state.correctAnswersCount;
 const total = store.state.questions.length;
 
+const ending = correct > 1 && correct < 5 ? "а" : correct >= 5 ? "ов" : "";
+
 watchEffect(() => {
   if (store.state.userAnswers.length != total) {
     router.replace("/");
@@ -58,7 +60,7 @@ switch (true) {
 
   case correct > 0:
     title.value = "Хороший результат!";
-    text.value = `Вы ответили правильно на ${correct} вопросов. <br /> Так держать!`;
+    text.value = `Вы ответили правильно на ${correct} вопрос${ending}. <br /> Так держать!`;
     break;
 
   case correct === 0:
@@ -87,8 +89,6 @@ switch (true) {
     font-size: 24px;
     line-height: 140%;
   }
-
-
 
   &__btn {
     font-family: montserrat;
