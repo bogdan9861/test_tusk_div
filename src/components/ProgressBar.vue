@@ -1,9 +1,11 @@
 <template lang="">
-  <div class="progress">
+  <div class="progress" ref="progress">
     <span class="progress__number from">0</span>
     <div
       class="progress__background"
-      :style="{ width: (886 / total) * currentQuestion + 'px' }"
+      :style="{
+        width: (progress?.clientWidth / total) * currentQuestion + 'px',
+      }"
     >
       <span
         class="progress__number current"
@@ -16,7 +18,11 @@
 </template>
 
 <script setup>
+import { ref, watchEffect } from "vue";
+
 const { currentQuestion, total } = defineProps(["currentQuestion", "total"]);
+
+const progress = ref(null);
 </script>
 
 <style lang="scss">
