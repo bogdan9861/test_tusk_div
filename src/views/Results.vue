@@ -38,11 +38,11 @@ const text = ref("");
 const correct = store.state.correctAnswersCount;
 const total = store.state.questions.length;
 
-// watchEffect(() => {
-//   if (store.state.userAnswers.length != total) {
-//     router.replace("/");
-//   }
-// });
+watchEffect(() => {
+  if (store.state.userAnswers.length != total) {
+    router.replace("/");
+  }
+});
 
 const restart = () => {
   store.commit("clearState");
