@@ -22,12 +22,7 @@ li {
 }
 .container {
   max-width: 886px;
+  width: 100%;
   margin: 0 auto;
-}
-
-.title {
-  font-size: 48px;
-  font-weight: 800;
-  margin-bottom: 20px;
 }
 </style>

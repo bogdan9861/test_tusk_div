@@ -92,7 +92,9 @@ const onHandleAnswer = (i, isCorrect) => {
 
   &__list-item__text {
     font-size: 16px;
+    line-height: 125%;
     max-width: 766px;
+    width: 100%;
   }
 
   &__list-item__radio {

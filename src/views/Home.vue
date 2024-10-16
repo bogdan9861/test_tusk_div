@@ -1,12 +1,14 @@
 <template>
-  <div class="container">
-    <h1 class="title">Тестирование</h1>
-    <Card
-      @onRadioPicked="nextQuestion"
-      :title="data[currentQuestion]?.title"
-      :answers="shuffle(data[currentQuestion]?.answers)"
-    />
-    <ProgressBar :currentQuestion="currentQuestion" :total="data.length" />
+  <div class="home">
+    <div class="container">
+      <h1 class="home__title">Тестирование</h1>
+      <Card
+        @onRadioPicked="nextQuestion"
+        :title="data[currentQuestion]?.title"
+        :answers="shuffle(data[currentQuestion]?.answers)"
+      />
+      <ProgressBar :currentQuestion="currentQuestion" :total="data.length" />
+    </div>
   </div>
 </template>
 
@@ -26,4 +28,17 @@ const currentQuestion = computed(() => {
 });
 </script>
 
-<style></style>
+<style lang="scss">
+.home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__title {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+}
+</style>
