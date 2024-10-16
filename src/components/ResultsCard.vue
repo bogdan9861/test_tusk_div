@@ -18,12 +18,14 @@ const props = defineProps(["title", "text", "correct"]);
   margin-bottom: 20px;
 
   &__title {
+    font-weight: bold;
+    font-size: 20px;
     margin-bottom: 15px;
   }
 
   &__text {
     font-size: 16px;
-    line-height: 140%;
+    line-height: 135%;
   }
 }
 

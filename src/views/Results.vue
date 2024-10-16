@@ -2,7 +2,9 @@
   <div class="container">
     <h1 class="results__title">{{ title }}</h1>
     <p class="results__text">
-      {{ text }}
+      {{ text.split("<br />")[0] }}
+      <br />
+      {{ text.split("<br />")[1] }}
     </p>
 
     <ul class="results__list">
@@ -15,7 +17,7 @@
       </li>
     </ul>
 
-    <Button class="results__btn" @click="restart">Пройти ещё раз</Button>
+    <Button class="results__btn" @click="restart">Пройти еще раз</Button>
   </div>
 </template>
 
@@ -46,18 +48,18 @@ switch (true) {
   case correct === 9:
     title.value = "Поздравляем!";
     text.value =
-      "Вы правильно ответили на все вопросы. Вы действительно отлично разбираетесь в IT.";
+      "Вы правильно ответили на все вопросы. <br /> Вы действительно отлично разбираетесь в IT.";
     break;
 
   case correct > 0:
     title.value = "Хороший результат!";
-    text.value = `Вы ответили правильно на ${correct} вопросов. Так держать!`;
+    text.value = `Вы ответили правильно на ${correct} вопросов. <br /> Так держать!`;
     break;
 
   case correct === 0:
     title.value = "Упс :(";
     text.value =
-      "Вы неправильно ответили на все вопросы. Нужно подучить теорию";
+      "Вы неправильно ответили на все вопросы. <br /> Нужно подучить теорию.";
 }
 </script>
 
@@ -79,6 +81,8 @@ switch (true) {
 }
 
 .results__btn {
+  font-family: montserrat;
+
   margin: 27px auto 0 auto;
   padding: 16px 30px;
 
