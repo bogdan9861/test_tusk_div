@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from "vue";
+import { ref } from "vue";
 
 const { currentQuestion, total } = defineProps(["currentQuestion", "total"]);
 

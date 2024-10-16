@@ -16,6 +16,7 @@ const props = defineProps(["title", "text", "correct"]);
   background-color: #e5f5e1;
   border-radius: 20px;
   margin-bottom: 20px;
+  min-height: 163px;
 
   &__title {
     font-weight: bold;

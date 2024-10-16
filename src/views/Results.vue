@@ -1,23 +1,28 @@
 <template lang="">
-  <div class="container">
-    <h1 class="results__title">{{ title }}</h1>
-    <p class="results__text">
-      {{ text.split("<br />")[0] }}
-      <br />
-      {{ text.split("<br />")[1] }}
-    </p>
+  <div class="results">
+    <div class="container">
+      <h1 class="results__title">{{ title }}</h1>
+      <p class="results__text">
+        {{ text.split("<br />")[0] }}
+        <br />
+        {{ text.split("<br />")[1] }}
+      </p>
 
-    <ul class="results__list">
-      <li v-for="answer in $store.state.userAnswers">
-        <ResultsCard
-          :title="answer.title"
-          :text="answer.text"
-          :correct="answer.correct"
-        />
-      </li>
-    </ul>
+      <ul class="results__list">
+        <li
+          class="results__list-item"
+          v-for="answer in $store.state.userAnswers"
+        >
+          <ResultsCard
+            :title="answer.title"
+            :text="answer.text"
+            :correct="answer.correct"
+          />
+        </li>
+      </ul>
 
-    <Button class="results__btn" @click="restart">Пройти еще раз</Button>
+      <Button class="results__btn" @click="restart">Пройти еще раз</Button>
+    </div>
   </div>
 </template>
 
@@ -33,11 +38,11 @@ const text = ref("");
 const correct = store.state.correctAnswersCount;
 const total = store.state.questions.length;
 
-watchEffect(() => {
-  if (store.state.userAnswers.length != total) {
-    router.replace("/");
-  }
-});
+// watchEffect(() => {
+//   if (store.state.userAnswers.length != total) {
+//     router.replace("/");
+//   }
+// });
 
 const restart = () => {
   store.commit("clearState");
@@ -63,42 +68,48 @@ switch (true) {
 }
 </script>
 
-<style>
-.container {
+<style lang="scss">
+.results {
   margin: 80px auto;
-}
 
-.results__title {
-  font-size: 48px;
-  font-weight: 800;
-  margin-bottom: 20px;
-}
+  // .results__title
 
-.results__text {
-  margin-bottom: 40px;
-  font-size: 24px;
-  line-height: 140%;
-}
+  &__title {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
 
-.results__btn {
-  font-family: montserrat;
+  // .results__text
 
-  margin: 27px auto 0 auto;
-  padding: 16px 30px;
+  &__text {
+    margin-bottom: 40px;
+    font-size: 24px;
+    line-height: 140%;
+  }
 
-  max-width: 220px;
-  width: 100%;
-  display: block;
 
-  background-color: #3300ff;
-  color: #fff;
 
-  font-weight: bold;
-  font-size: 18px;
+  &__btn {
+    font-family: montserrat;
 
-  border-radius: 10px;
-  border: none;
+    margin: 40px auto 0 auto;
+    padding: 16px 30px;
 
-  cursor: pointer;
+    max-width: 220px;
+    width: 100%;
+    display: block;
+
+    background-color: #3300ff;
+    color: #fff;
+
+    font-weight: bold;
+    font-size: 18px;
+
+    border-radius: 10px;
+    border: none;
+
+    cursor: pointer;
+  }
 }
 </style>
